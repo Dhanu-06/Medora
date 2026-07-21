@@ -5,6 +5,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+
   healthGoal?: string;
   age?: number;
   height?: number;
@@ -12,6 +13,12 @@ interface User {
   bmi?: number;
   dailyCalories?: number;
   surveyCompleted?: boolean;
+
+  // Add these
+  bloodGroup?: string;
+  emergencyContact?: string;
+  activityLevel?: string;
+  gender?: string;
 }
 
 interface AuthContextType {

@@ -91,12 +91,36 @@ interface Medicine {
   reminderEnabled?: boolean;
 }
 
-const emptyForm = {
+type Frequency =
+  | 'once_daily'
+  | 'twice_daily'
+  | 'three_times_daily'
+  | 'four_times_daily'
+  | 'weekly'
+  | 'as_needed';
+
+interface MedicineForm {
+  name: string;
+  dosage: string;
+  frequency: Frequency;
+  time: string;
+  times: string[];
+  startDate: string;
+  endDate: string;
+  instructions: string;
+  foodRestrictions: string;
+  tabletsRemaining: string;
+  lowStockThreshold: string;
+  notes: string;
+  reminderEnabled: boolean;
+}
+
+const emptyForm: MedicineForm = {
   name: '',
   dosage: '',
-  frequency: 'once_daily' as const,
+  frequency: 'once_daily',
   time: '8:00 AM',
-  times: ['08:00'] as string[],
+  times: ['08:00'],
   startDate: '',
   endDate: '',
   instructions: '',
@@ -272,7 +296,7 @@ const MedicineManager = () => {
     setForm({
       name: med.name,
       dosage: med.dosage,
-      frequency: med.frequency || 'once_daily',
+      frequency: (med.frequency || 'once_daily') as Frequency,
       time: formatTime24ToDisplay(times[0] || '08:00'),
       times,
       startDate: med.startDate ? med.startDate.toString().slice(0, 10) : '',

@@ -3,7 +3,7 @@ import { AppLayout } from '../components/AppLayout';
 import { PageCard } from '../components/StatCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, AlertTriangle, CheckCircle, Info, Lightbulb } from 'lucide-react';
-import { interactionsAPI } from '../services/api';
+import { interactionAPI } from '../services/api';
 
 interface InteractionResult {
   medicine: string;
@@ -25,7 +25,7 @@ export default function MedicineFoodInteractions() {
     if (!q.trim()) return;
     setLoading(true); setSearched(true); setResult(null);
     try {
-      const { data } = await interactionsAPI.check(q);
+      const { data } = await interactionAPI.check(q);
       setResult(data);
     } catch {
       setResult(null);

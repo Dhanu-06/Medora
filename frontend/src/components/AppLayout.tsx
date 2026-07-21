@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppSidebar } from '@/components/AppSidebar';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { FloatingChatbot } from '@/components/FloatingChatbot';
+
 import { MedicineReminderPopup } from '@/components/MedicineReminderPopup';
 import { Bell, Search } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
@@ -109,7 +109,7 @@ export function AppLayout({ children, title }: AppLayoutProps) {
           </AnimatePresence>
         </main>
       </div>
-      <FloatingChatbot />
+      
       {reminderCtx && (
       <MedicineReminderPopup
         reminder={popupReminder}

@@ -71,7 +71,15 @@ const Dashboard = () => {
     );
   }
 
-  const metrics = [
+  const metrics: {
+    icon: any;
+    title: string;
+    value: string;
+    subtitle: string;
+    trend: 'up' | 'down' | 'neutral';
+    trendValue: string;
+    link: string;
+  }[] = [
     { icon: Trophy, title: 'Health Score', value: healthScore != null ? `${healthScore}` : '–', subtitle: 'out of 100', trend: healthScore && healthScore >= 70 ? 'up' : 'neutral', trendValue: healthScore != null ? 'Complete survey for score' : 'Complete survey', link: '/survey' },
     { icon: Flame, title: 'Calories Today', value: `${todayCalories.toLocaleString()}`, subtitle: `of ${goal} kcal`, trend: todayCalories >= goal * 0.8 ? 'up' : 'neutral', trendValue: todayCalories > 0 ? `${goal - todayCalories} kcal remaining` : 'Log your meals', link: '/food-tracker' },
     { icon: Pill, title: 'Medicine Adherence', value: `${adherencePct}%`, subtitle: `${adherence.taken}/${adherence.total || '–'} taken`, trend: adherencePct >= 80 ? 'up' : adherencePct > 0 ? 'down' : 'neutral', trendValue: adherence.total ? 'Today\'s doses' : 'Add medicines', link: '/medicines' },
